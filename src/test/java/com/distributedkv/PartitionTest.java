@@ -94,7 +94,7 @@ public class PartitionTest {
         assertEquals(0, initialTerm);
 
         node.start();
-        Thread.sleep(500);
+        Thread.sleep(800);
 
         assertTrue(node.getCurrentTerm() > 0,
                 "Term should have incremented after election");

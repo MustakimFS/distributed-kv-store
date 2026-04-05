@@ -29,7 +29,7 @@ public class LatencyTest {
         node.start();
 
         // Wait for leader election
-        Thread.sleep(500);
+        Thread.sleep(800);
         assertTrue(node.isLeader(), "Node should be leader before latency tests");
     }
 

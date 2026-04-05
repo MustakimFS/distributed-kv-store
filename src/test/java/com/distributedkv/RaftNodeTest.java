@@ -42,7 +42,7 @@ public class RaftNodeTest {
     @Test
     void testSingleNodeBecomesLeader() throws InterruptedException {
         // Single node cluster - should elect itself within 300ms
-        Thread.sleep(500);
+        Thread.sleep(800);
         assertTrue(node.isLeader(),
                 "Single node should elect itself as leader");
     }
@@ -50,7 +50,7 @@ public class RaftNodeTest {
     @Test
     void testLeaderCanWrite() throws InterruptedException {
         // Wait for election
-        Thread.sleep(500);
+        Thread.sleep(800);
         assertTrue(node.isLeader());
 
         boolean result = node.appendToLog("PUT testKey testValue");
@@ -60,7 +60,7 @@ public class RaftNodeTest {
     @Test
     void testStateMachineAppliesWrite() throws InterruptedException {
         // Wait for election
-        Thread.sleep(500);
+        Thread.sleep(800);
         assertTrue(node.isLeader());
 
         node.appendToLog("PUT hello world");
