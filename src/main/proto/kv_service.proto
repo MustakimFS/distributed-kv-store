@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option java_package = "com.distributedkv.proto";
+option java_outer_classname = "KVServiceProto";
+option java_multiple_files = true;
+
+package kvservice;
+
+enum ConsistencyLevel {
+  STRONG = 0;
+  EVENTUAL = 1;
+}
+
+message PutRequest {
+  string key = 1;
+  string value = 2;
+  ConsistencyLevel consistency = 3;
+}
+
+message PutResponse {
+  bool success = 1;
+  string leader_id = 2;
+  string error = 3;
+}
+
+message GetRequest {
+  string key = 1;
+  ConsistencyLevel consistency = 2;
+}
+
+message GetResponse {
+  bool found = 1;
+  string value = 2;
+  string leader_id = 3;
+  string error = 4;
+}
+
+message DeleteRequest {
+  string key = 1;
+  ConsistencyLevel consistency = 2;
+}
+
+message DeleteResponse {
+  bool success = 1;
+  string leader_id = 2;
+  string error = 3;
+}
+
+service KVService {
+  rpc Put(PutRequest) returns (PutResponse);
+  rpc Get(GetRequest) returns (GetResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
