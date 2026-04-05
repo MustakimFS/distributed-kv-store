@@ -5,9 +5,9 @@ import java.util.List;
 public class RaftConfig {
 
     // Raft timing constants (milliseconds)
-    public static final int ELECTION_TIMEOUT_MIN_MS = 150;
-    public static final int ELECTION_TIMEOUT_MAX_MS = 300;
-    public static final int HEARTBEAT_INTERVAL_MS = 50;
+    public static final int ELECTION_TIMEOUT_MIN_MS = 300;
+    public static final int ELECTION_TIMEOUT_MAX_MS = 600;
+    public static final int HEARTBEAT_INTERVAL_MS = 100;
 
     // Cluster configuration
     private final String nodeId;
