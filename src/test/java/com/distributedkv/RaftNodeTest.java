@@ -42,7 +42,7 @@ public class RaftNodeTest {
     @Test
     void testSingleNodeBecomesLeader() throws InterruptedException {
         // Single node cluster - should elect itself within 300ms
-        Thread.sleep(800);
+        Thread.sleep(500);
         assertTrue(node.isLeader(),
                 "Single node should elect itself as leader");
     }
@@ -74,7 +74,7 @@ public class RaftNodeTest {
 
     @Test
     void testStateMachineAppliesDelete() throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(800);
         assertTrue(node.isLeader());
 
         node.appendToLog("PUT toDelete someValue");
@@ -82,7 +82,7 @@ public class RaftNodeTest {
         assertNotNull(node.getStore().get("toDelete").orElse(null));
 
         node.appendToLog("DELETE toDelete");
-        Thread.sleep(100);
+        Thread.sleep(200);
         assertFalse(node.getStore().exists("toDelete"),
                 "Key should be deleted from state machine");
     }

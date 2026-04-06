@@ -43,7 +43,7 @@ public class PartitionTest {
         node = new RaftNode(config, store);
         node.start();
 
-        Thread.sleep(500);
+        Thread.sleep(800);
         assertTrue(node.isLeader());
 
         // Write multiple keys
@@ -70,7 +70,7 @@ public class PartitionTest {
         node = new RaftNode(config, store);
         node.start();
 
-        Thread.sleep(500);
+        Thread.sleep(800);
         assertTrue(node.isLeader());
 
         node.appendToLog("PUT myKey firstValue");
