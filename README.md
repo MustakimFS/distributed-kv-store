@@ -152,9 +152,3 @@ src/main/java/com/distributedkv/
 **Why in-memory storage?** The sub-10ms read latency requirement is only achievable with in-memory reads. A ConcurrentHashMap provides O(1) reads with no disk I/O, easily satisfying the latency target (measured p99 under 1ms).
 
 **CAP theorem trade-offs:** In STRONG mode, this system is CP - it sacrifices availability (non-leaders reject reads) for consistency (linearizable reads). In EVENTUAL mode, it shifts toward AP - any node can serve reads, improving availability at the cost of potential stale reads during partitions.
-
-## Resume Bullets (verified)
-
-- Architected fault-tolerant distributed KV store using Raft consensus across a 5-node cluster with partition tolerance
-- Engineered gRPC communication with automatic failover, sub-10ms latency for strongly consistent reads (measured p99 <1ms)
-- Implemented tunable consistency (CP vs AP trade-offs) using configurable quorum-based reads
